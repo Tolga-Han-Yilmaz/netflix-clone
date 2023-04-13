@@ -8,16 +8,14 @@ interface InputProps {
   type?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-  id,
-  onChange,
-  value,
-  label,
-  type
-}) => {
+const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
   return (
     <div className="relative">
       <input
+        onChange={onChange}
+        type={type}
+        value={value}
+        id={id}
         className="
       block
       rounded-md
@@ -34,7 +32,8 @@ const Input: React.FC<InputProps> = ({
         "
         placeholder=" "
       />
-      <label 
+      <label
+        htmlFor={id}
         className="
           absolute
           text-md
@@ -51,10 +50,8 @@ const Input: React.FC<InputProps> = ({
           peer-placeholder-shown:translate-y-0
           peer-focus:scale-75
           peer-focus:-translate-y-3
-        "
-        htmlFor="email"
-      >
-        Email
+        ">
+        {label}
       </label>
     </div>
   );
